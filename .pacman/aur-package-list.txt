@@ -1,0 +1,4 @@
+htop-vim
+trizen
+ttf-meslo-nerd-font-powerlevel10k
+vim-sxhkdrc-git
