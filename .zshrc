@@ -116,6 +116,7 @@ fi
 # git init --bare $HOME/.dotfiles/.git
 alias dt='git --git-dir=/home/gw/.dotfiles/.git --work-tree=/home/gw'
 # dt config status.showUntrackedFiles no
+# complete -F _complete_alias config
 
 # git clone --seperate-git-dir=~/.myconf /path/to/repo
 
