@@ -77,7 +77,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git fasd extract zsh-vi-mode cp)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -119,6 +119,8 @@ alias dt='git --git-dir=/home/gw/.dotfiles --work-tree=/home/gw'
 # complete -F _complete_alias config
 
 # git clone --seperate-git-dir=~/.myconf /path/to/repo
+
+alias vim=nvim
 
 # Added package place for glibal nps without sudo
 # npm config set prefix "${HOME}/.npm-packages
