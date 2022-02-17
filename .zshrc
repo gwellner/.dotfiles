@@ -130,3 +130,6 @@ N_PREFIX="${HOME}/.npm-packages"
 
 export N_PREFIX=$N_PREFIX
 export PATH="$PATH:$NPM_PACKAGES/bin"
+
+# IntelliJ Workaround BSPWM
+export _JAVA_AWT_WM_NONREPARENTING=1.
