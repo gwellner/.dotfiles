@@ -417,7 +417,7 @@ font:
   #thickness: 0.15
 
 # Live config reload (changes require restart)
-#live_config_reload: true
+live_config_reload: true
 
 # Shell
 #
@@ -500,7 +500,8 @@ hints:
          mods: None
      binding:
          key: U
-         mods: Control|Shift
+       # mods: Control|Shift
+         mods: Alt
    - regex: "DWA-[0-9]+"
      post_processing: true
      command: /home/gw/.config/alacritty/jira-launch.sh
@@ -509,8 +510,8 @@ hints:
         mods: None
      binding:
        key: J
-       mods: Control|Shift
-       
+       mods: Alt
+
 
 # Mouse bindings
 #
