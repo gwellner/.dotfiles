@@ -47,5 +47,5 @@ export PATH="$PATH:$NPM_PACKAGES/bin"
 export _JAVA_AWT_WM_NONREPARENTING=1.
 
 # Starship init prompt for zsh
-eval "$(starship init zsh)"
+# eval "$(starship init zsh)"
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
