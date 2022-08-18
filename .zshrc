@@ -13,7 +13,7 @@ export ZSH_CUSTOM='/usr/share/zsh'
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git fasd extract zsh-vi-mode cp)
+plugins=(git fasd extract zsh-vi-mode cp oc)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -48,4 +48,3 @@ export _JAVA_AWT_WM_NONREPARENTING=1.
 
 # Starship init prompt for zsh
 # eval "$(starship init zsh)"
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
