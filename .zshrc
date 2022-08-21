@@ -5,8 +5,9 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-export ZSH='/usr/share/oh-my-zsh'
-export ZSH_CUSTOM='/usr/share/zsh'
+#export ZSH='/usr/share/oh-my-zsh'
+export ZSH='/home/gw/.oh-my-zsh'
+#export ZSH_CUSTOM='/usr/share/zsh'
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
@@ -47,4 +48,5 @@ export PATH="$PATH:$NPM_PACKAGES/bin"
 export _JAVA_AWT_WM_NONREPARENTING=1.
 
 # Starship init prompt for zsh
-# eval "$(starship init zsh)"
+eval "$(starship init zsh)"
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
