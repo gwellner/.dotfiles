@@ -50,3 +50,8 @@ export _JAVA_AWT_WM_NONREPARENTING=1.
 # Starship init prompt for zsh
 eval "$(starship init zsh)"
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
