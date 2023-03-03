@@ -9,12 +9,19 @@ fi
 export ZSH='/home/gw/.oh-my-zsh'
 #export ZSH_CUSTOM='/usr/share/zsh'
 
+
+#git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+export ZSH_THEME="powerlevel10k/powerlevel10k"
+
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git fasd extract zsh-vi-mode cp oc)
+plugins=(git fasd extract zsh-vi-mode cp oc fzf-tab)
+
+# set FZF defaults
+export FZF_DEFAULT_OPTS='-m --height 40% --layout=reverse --border'
 
 source $ZSH/oh-my-zsh.sh
 
@@ -37,7 +44,6 @@ alias vim=nvim
 
 # Added package place for glibal nps without sudo
 # npm config set prefix "${HOME}/.npm-packages
-
 NPM_PACKAGES="${HOME}/.npm-packages"
 N_PREFIX="${HOME}/.npm-packages"
 
@@ -46,10 +52,6 @@ export PATH="$PATH:$NPM_PACKAGES/bin"
 
 # IntelliJ Workaround BSPWM
 export _JAVA_AWT_WM_NONREPARENTING=1.
-
-# Starship init prompt for zsh
-eval "$(starship init zsh)"
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/.local/bin" ] ; then

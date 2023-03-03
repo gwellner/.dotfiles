@@ -502,7 +502,7 @@ hints:
          key: U
        # mods: Control|Shift
          mods: Alt
-   - regex: "DWA-[0-9]+"
+   - regex: "DWA-[0-9]+|TIPDEV-[0-9]+"
      post_processing: true
      command: /home/gw/.config/alacritty/jira-launch.sh
      mouse:
