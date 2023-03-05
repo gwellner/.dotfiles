@@ -18,10 +18,10 @@ export ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git fasd extract zsh-vi-mode cp oc fzf-tab)
+plugins=(git fasd extract zsh-vi-mode cp oc)
 
 # set FZF defaults
-export FZF_DEFAULT_OPTS='-m --height 40% --layout=reverse --border'
+# export FZF_DEFAULT_OPTS='-m --height 40% --layout=reverse --border'
 
 source $ZSH/oh-my-zsh.sh
 
