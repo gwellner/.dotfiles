@@ -1,3 +1,4 @@
+-- boostrap packer
 local ensure_packer = function()
   local fn = vim.fn
   local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
@@ -35,6 +36,8 @@ return require('packer').startup(function(use)
     tag = '0.1.1',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
+  -- may use neotest, maybe just remove ..
+  use 'vim-test/vim-test'
 
   -- My plugins here
   -- use 'foo1/bar1.nvim'
