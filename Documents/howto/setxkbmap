@@ -1,0 +1,33 @@
+// Yank Selection execute it with :@"
+
+
+open this ...
+
+sudo vim /usr/share/X11/xkb/symbols/us
+
+add this lines
+
+partial alphanumeric_keys
+xkb_symbols "intl_nodeadkeys" {
+    name[Group1]= "U.S. English - International (without plain dead keys)";
+    include "us(intl)"
+    // Switch left alt and swap
+    include "level3(altwin:swap_lalt_lwin)"
+    // Alphanumeric section (overriding some annoying dead keys)
+    key <TLDE> { [     grave,       asciitilde ] };
+    key <ESC>  { [ Escape, asciitilde, grave ]};
+    key <AE06> { [    6, asciicircum,    onequarter,      asciicircum ] };
+    key <AC11> { [ apostrophe,        quotedbl ] };
+};
+
+activate with
+
+setxkbmap -layout us -variant intl_nodeadkeys
+
+
+also swap alt and super
+
+setxkbmap -option altwin:swap_lalt_lwin
+
+
+"some info about this https://help.ubuntu.com/community/Custom%20keyboard%20layout%20definitions

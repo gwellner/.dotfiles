@@ -16,12 +16,13 @@ M.opts = function()
       nls.builtins.formatting.prettier.with({
         extra_args = function(params)
           return params.options
-            and params.options.tabSize
-            and {
-              "--tab-width",
-              params.options.tabSize,
-            }
-            and { "--no-bracket-spacing" } -- import { SOMETING } from ''
+          -- Options are parsed from angular/package.json and then overwritten with this.
+          -- and params.options.tabSize
+          -- and {
+          --  "--tab-width",
+          --  params.options.tabSize,
+          -- }
+          -- and { "--no-bracket-spacing" } -- import { SOMETING } from ''
         end,
       }), --]]
       -- nls.builtins.diagnostics.fish,

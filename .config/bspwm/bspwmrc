@@ -1,0 +1,105 @@
+#! /bin/sh
+
+# bash ~/.screenlayout/moedling.sh
+
+#                            ---------
+#                            XSessions
+#                            ---------
+
+# Swap left alt with win for mechanical keyboard
+#setxkbmap -option altwin:swap_lalt_lwin
+
+# Stop the beep
+xset -b
+
+# set standard us keys
+setxkbmap -layout us -variant intl_nodeadkeys
+
+# Work Arround IntelliJ and bspwm
+# pacman -S wmname
+wmname LG3D
+export _JAVA_AWT_WM_NONREPARENTING=1
+#                            ------------
+#                            BSPWM CONFIG
+#                            ------------
+
+#Variables
+gap=0
+border=4
+
+# sxhkd &
+# Workarround for IDEA 2018 - https://gist.github.com/codybonney/3fcbbc450f6ce1e22b2851f973c7537a
+bspc config external_rules_command "/home/gw/.config/bspwm/external_rules"
+
+bspc monitor -d I II III IV V VI VII VIII IX X
+#bspc monitor HDMI1 -d "1" "2" "3" "4" "5" "6" "7" "8"
+#bspc monitor eDP1 -d  "9"
+#bspc monitor HDMI2 -d "0"
+
+bspc config border_width $border
+bspc config window_gap $gap
+# bspc multi montiroconfig
+# bspc query -M --names
+# bspc monitor HDMI2 config top_padding 0
+
+# This creates negative padding eaual to window gap so that gaps are shown only
+# between windows and not on desktop edges.
+bspc config window_gap $gap
+bspc config top_padding 0
+#bspc config -m HDMI-0 top_padding 30
+# bspc config -m DP-3 top_padding 30
+
+#bspc config top_padding -$gap
+#bspc config top_padding $($PANEL_HEIGHT - gap)
+bspc config left_padding -$gap
+bspc config right_padding -$gap
+bspc config bottom_padding -$gap
+
+bspc config split_ratio 0.52
+bspc config borderless_monocle true
+bspc config gapless_monocle true
+
+# use xprop
+bspc rule -a Gimp state=floating follow=on
+#bspc rule -a Gimp desktop='^8' state=floating follow=on
+#bspc rule -a Chromium desktop='^2'
+bspc rule -a mplayer2 state=floating
+bspc rule -a Zathura state=tiled
+bspc rule -a Kupfer.py focus=on
+bspc rule -a Screenkey manage=off
+bspc rule -a "Chromium":"teams.microsoft.com" desktop='^5'
+bspc rule -a "Chromium":"outlook.office.com__owa" desktop='^5'
+#bspc rule -a "jetbrains-idea":"~/Work/rise/nwi-lib" desktop='^2'
+#bspc rule -a "jetbrains-idea" desktop='^3'
+bspc rule -a "KeePassXC" --one-shot desktop='^8' focus=on follow=on #KeePassXC
+
+# Select window wiht mouse focus
+bspc config focus_follows_pointer false
+bspc config pointer_follows_focus true
+#bspc config click_to_focus true
+
+# remove unplugged monitors
+bspc config remove_disabled_monitors true
+bspc config remove_unplugged_monitors true
+bspc config merge_overlapping_monitors true
+
+# Actuall focused window
+# bspc config focused_border_color  "#d0d293"
+
+### SUPER TESTING ###
+
+# * Reloading
+# for reloading bspwm without losing windows/structure
+# if [[ -e $BSPWM_STATE ]] ; then
+# 	pkill -x sxhkd
+# 	bspc wm --load-state "$BSPWM_STATE"
+# 	rm "$BSPWM_STATE"
+# else
+
+# Load session
+#. "$BSPWM_CONFIG/restore.cfg"
+#if [ -e "$BSPWM_STATE" ] ; then
+# bspc wm --load-state "$BSPWM_STATE"
+# bspc wm --adopt-orphans
+# rm "$BSPWM_STATE"
+#fi:q

@@ -1,0 +1,42 @@
+# dont use sdg1,2,3 no numbers:
+sudo cat archlinux-2022.01.01-x86_64.iso > /dev/sdg
+
+# then do it WLAN
+
+iwctl
+device list
+station wlan0 scan
+station wlan0 get-networks
+station wlan0 connect WELLNER-C
+station wlan0 show
+exit
+
+#Wipe partion tables if some already exist
+lsblk or fdisk -l
+wipefs -a /dev/sd<x>
+reboot
+
+#Install arch
+
+archinstall
+
+# packages
+iwd plasma-desktop neovim
+
+useradd -m gw
+export EDITOR=nvim
+sudoedit /etc/sudoers -> Enable Wheel
+sudoedit /etc/group -> add gw to wheel group
+
+# make
+
+# Set firefoxdeveloper edition as default browser in xorg
+
+ls /usr/share/appliactions
+
+xdg-settings get default-web-browser
+
+xdg-settings set default-web-browser firefoxdeveloperedition.desktop
+
+# Free space
+paccache -rk 1

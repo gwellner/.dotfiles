@@ -1,0 +1,6 @@
+### Bluethooth
+scan on
+
+pair 9C:0C:35:10:60:C1
+connect 9C:0C:35:10:60:C1
+

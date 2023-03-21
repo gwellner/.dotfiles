@@ -1,0 +1,8 @@
+https://esfapp.porscheinformatik.com/dasweltauto/app/dev_tools#/console
+
+example:
+DELETE dasweltauto-dwa-vehicles-prod-de_at/_doc/0027013213
+GET dasweltauto-dwa-vehicles-prod-de_at/_doc/0027013213
+
+CARHUB:
+https://carhub.porscheinformatik.com/docs/openapi/?urls.primaryName=Vehicle%20Broker%3A%20Export%20API#/Vehicle%20Legacy%20API/header

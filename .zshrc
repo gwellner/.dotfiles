@@ -41,6 +41,7 @@ alias dt='git --git-dir=/home/gw/.dotfiles --work-tree=/home/gw'
 # git clone --seperate-git-dir=~/.myconf /path/to/repo
 
 alias vim=nvim
+alias t=task
 
 # Added package place for glibal nps without sudo
 # npm config set prefix "${HOME}/.npm-packages
