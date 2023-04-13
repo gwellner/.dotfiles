@@ -7,7 +7,7 @@ super + t
 	alacritty msg create-window
 
 super + r
-	rofi -modi window -show run
+	rofi -modi window,"clipboard:greenclip print" -show run
 
 super + w
 	rofi -modi window -show window
@@ -16,8 +16,16 @@ super + w
 super + @space
 	rofi
 
-super + c 
-	clipmenu
+# Start clipmenud in xinit
+#super + c 
+#	clipmenu
+
+# start greenlcip daemon & xinit
+super + c
+  rofi -modi "clipboard:greenclip print" -show clipboard
+
+super + a
+  dunstctl action
 
 # make sxhkd reload its configuration files:
 super + Escape
