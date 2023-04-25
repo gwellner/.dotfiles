@@ -40,7 +40,9 @@ alias dt='git --git-dir=/home/gw/.dotfiles --work-tree=/home/gw'
 
 # git clone --seperate-git-dir=~/.myconf /path/to/repo
 
-alias vim=nvim
+# create server in nvim with echo serverstart('/tmp/nvim.pipe')
+alias tovim='xargs -0 nvim --server /tmp/nvim.pipe --remote-send'
+alias vim='nvim  --listen /tmp/nvim.pipe'
 alias t=task
 
 # Added package place for glibal nps without sudo
