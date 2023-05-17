@@ -1,10 +1,20 @@
 local actions = require("telescope.actions")
 
-local M = {
+local TELESCOPE = {
   "nvim-telescope/telescope.nvim",
 }
 
-M.opts = {
+TELESCOPE.keys = {
+  {
+    "<leader>tr",
+    "<cmd>Telescope resume<CR>",
+    desc = "Resume last buffer",
+    noremap = true,
+    silent = true,
+  },
+}
+
+TELESCOPE.opts = {
   defaults = {
     layout_strategy = "horizontal",
     layout_config = { prompt_position = "top" },
@@ -18,6 +28,22 @@ M.opts = {
         ["<C-j>"] = actions.move_selection_next,
         ["<C-k>"] = actions.move_selection_previous,
       },
+    },
+    config = function()
+      require("telescope").load_extension("project")
+    end,
+  },
+}
+
+local PROJECT = {
+  "nvim-telescope/telescope-project.nvim",
+  keys = {
+    {
+      "<leader>fp",
+      "<cmd>lua require'telescope'.extensions.project.project{}<CR>",
+      desc = "Find Project",
+      noremap = true,
+      silent = true,
     },
   },
 }
@@ -42,4 +68,4 @@ M.config = function()
 end
 --]]
 
-return M
+return { TELESCOPE, PROJECT }

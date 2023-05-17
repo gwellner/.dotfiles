@@ -30,6 +30,11 @@ M.opts = function()
       nls.builtins.formatting.shfmt,
       -- nls.builtins.diagnostics.flake8,
     },
+    setup = {
+      sources = {
+        nls.builtins.code_actions.gitsigns,
+      },
+    },
   }
 end
 
