@@ -1,0 +1,15 @@
+[Unit]
+Description=SSH key agent
+
+[Service]
+Type=simple
+Environment=SSH_AUTH_SOCK=%t/ssh-agent.socket
+# DISPLAY required for ssh-askpass to work
+Environment=DISPLAY=:0
+ExecStart=/usr/bin/ssh-agent -D -a $SSH_AUTH_SOCK
+
+[Install]
+WantedBy=default.target
+
+#Need to Add this to .zprofile
+#export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"

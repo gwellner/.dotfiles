@@ -1,0 +1,36 @@
+#! /bin/sh
+
+wid=$1
+class=$(echo ${2} | xargs)
+instance=$(echo ${3} | xargs)
+title=$(xtitle $wid | xargs)
+consequences=$4
+# wm_name=$(xprop -id $wid | grep WM_NAME\(COMPOUND_TEXT\) | grep -o -E '".*"')
+
+# Dont work since its not present yet
+# wm_name=$(xprop -id 18874885 | grep WM_NAME\(COMPOUND_TEXT\) | grep -o -E '".*"')
+
+# Debug
+echo "---------------------------------" >>/tmp/bspc-external-rules
+echo "wid: $wid class: $class instance: $instance " >>/tmp/bspc-external-rules
+echo "title: $title, wm_name: $wm_name" >>/tmp/bspc-external-rules
+echo "consequences: $consequences" >>/tmp/bspc-external-rules
+
+# fix context menus in IntelliJ IDEA 2018.1
+#[[ "$class" = "jetbrains-idea" ]] && [[ $(xtitle "$wid") =~ ^win[0-9]*$ ]] && echo "manage=off";
+
+if [ "$instance" = "popup-calendar" ]; then
+	echo "state=floating"
+	echo "focus=on"
+	echo "border=off"
+
+	xdotool windowmove $wid $((1920 - $w)) $(($PANEL_HEIGHT + 5))
+	xdotool windowactivate $wid
+	exit 0
+fi
+
+if [[ "$class" == *"jetbrains-idea"]]; then
+	echo "border=off"
+fi
+
+#xdotool search --name svn-backend-services
