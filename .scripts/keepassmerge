@@ -1,5 +1,0 @@
-cd "$(dirname "${BASH_SOURCE[0]}")"
-gdrive download 13ULdUxjH3l28My-ulF9k3yCVvzyNQGrJ
-keepassxc-cli merge ~/.secret/master2.0.kdbx master2.0.kdbx -s
-rm ~/.scripts/master2.0.kdbx
-./gdrive.upload

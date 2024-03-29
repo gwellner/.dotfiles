@@ -1,8 +1,0 @@
-#source ~/.vimrc
-set clipboard+=unnamed
-set surround
-
-map \r <Action>(ReformatCode)
-map <C-G> <Action>(GotoDeclaration)
-map H <Action>(Back)
-map L <Action>(Forward)

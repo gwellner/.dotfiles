@@ -1,9 +1,0 @@
-gdrive update 1nOUPBKRcm2eiZOTAUhL7EZibtM_zweOA ~/.secret/master2.0.kdbx
-gdrive download query "name contains master2.0.kd"
-
-
-# Sync existing source ( to create new sync an upload ist needed )
-gdrive sync upload .secret 1fLuamB2o7NoSEiX0hgYwwbVvrsj5luVm
-
-#
-gdrive sync download --keep-remote 1fLuamB2o7NoSEiX0hgYwwbVvrsj5luVm ~/.secret

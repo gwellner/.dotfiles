@@ -1,7 +1,0 @@
-kubectl run greg-test -i -t --rm --image docker.porscheinformatik.com/dasweltauto/datenkrake/debug:1 -- /bin/sh
-tunnel.sh webdb04p 1521 1522
-oc port-forward pod/greg-test 1521:1522
-
-
-credentials:
-https://gitlab.porscheinformatik.com/search?search=datasource.gw&nav_source=navbar&project_id=97&group_id=33&search_code=true&repository_ref=master
