@@ -1,0 +1,2 @@
+\setenv PAGER nvim
+\pset pager on
