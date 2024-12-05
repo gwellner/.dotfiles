@@ -25,16 +25,22 @@ super + @space
 super + c
   rofi -modi "clipboard:greenclip print" -show clipboard
 
+# focus the next/previous window in the current desktop
+# firefox about:config -> full-screen-api.ignore-widgets;true
+super + shift + c
+	bspc node -f next.local.!hidden.window
+
 super + a
   dunstctl action
 
 # make sxhkd reload its configuration files:
 super + Escape
+  notify-send "rebooting sxhkd"
 	pkill -UsR1 -x sxhkd
 
 #Map Wacom to hDM1
 super + shift + alt + 1
-    xinput map-to-output 12 HDMI1
+    xinput map-to-output 12 HDMI-1
 
 # change Keyboard Layout
 

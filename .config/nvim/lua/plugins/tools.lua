@@ -43,8 +43,8 @@ return {
       require("dbee").setup(--[[optional config]] { lazy = true })
     end,
     init = function()
-      require("which-key").register({
-        ["<leader>t"] = { name = "+tools" },
+      require("which-key").add({
+        { "<leader>t", group = "tools" },
       })
     end,
     keys = {
@@ -136,13 +136,13 @@ return {
   {
     "LudoPinelli/comment-box.nvim",
     init = function()
-      require("which-key").register({
-        ["<leader>b"] = { name = "+box", mode = "v" },
+      require("which-key").add({
+        { "<leader>B", group = "box", mode = "v" },
       })
     end,
     keys = {
       {
-        "<leader>bl",
+        "<leader>Bl",
         function()
           local cb = require("comment-box")
           cb.lbox()
@@ -151,7 +151,7 @@ return {
         mode = "v",
       },
       {
-        "<leader>bc",
+        "<leader>Bc",
         function()
           local cb = require("comment-box")
           cb.ccbox()
@@ -190,5 +190,28 @@ return {
     config = function()
       require("kitty-scrollback").setup()
     end,
+  },
+  {
+    layz = true,
+    "glepnir/nerdicons.nvim",
+    cmd = "NerdIcons",
+    config = function()
+      require("nerdicons").setup({
+        border = "single", -- Border
+        prompt = "󰨭 ", -- Prompt Icon
+        preview_prompt = " ", -- Preview Prompt Icon
+        width = 0.5, -- flaot window width
+        down = "<C-j>", -- Move down in preview
+        up = "<C-k>", -- Move up in preview
+        copy = "<C-y>", -- Copy to the clipboard
+      })
+    end,
+    keys = {
+      {
+        "<leader>tN",
+        "<cmd>NerdIcons<cr>",
+        desc = "NerdIcons",
+      },
+    },
   },
 }

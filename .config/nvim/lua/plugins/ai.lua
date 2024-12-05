@@ -27,8 +27,8 @@ return {
       debug = false, -- Prints errors and the command which is run.
     },
     init = function()
-      require("which-key").register({
-        ["<leader>a"] = { name = "+ai" },
+      require("which-key").add({
+        { "<leader>a", group = "ai" },
       })
     end,
     keys = {

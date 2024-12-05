@@ -1,0 +1,62 @@
+# vim: filetype=neomuttrc
+source ~/.config/mutt/gruvbox/colors-gruvbox-shuber.muttrc
+source ~/.config/mutt/sidebar
+
+# Folder with emails
+set folder = "~/.mail/gmail"
+# Type of mailbox
+set mbox_type = Maildir
+# Directory to poll for new mail
+set spoolfile = +Inbox
+# Directory to save sent messages into
+set record = +Sent
+# Sets the drafts folder
+set postponed = +Drafts
+# File that headers will be cached
+set header_cache = ~/.cache/mutt
+
+# Local mail folders
+named-mailboxes "gmail" /home/gw/.mail/gmail/Inbox
+named-mailboxes "gmx" /home/gw/.mail/gmx/Inbox
+
+# Sort by threads
+set sort = threads
+# Sort threads by last date recieved - newest first
+set sort_aux = reverse-last-date-received
+# Show date in year/month/day hour:minute format
+set date_format="%y/%m/%d %I:%M%p"
+
+# Mailcap file is used to tell mutt how to open different types of file
+set mailcap_path = "~/.config/mutt/mailcap"
+# Tells Mutt to automatically view files with these mime types
+auto_view text/html
+# Order to try and show multipart emails
+alternative_order text/plain text/enriched text/html
+
+set index_format="%4C %?X?󰁦@& ?%S %.70s %> %L %D"
+
+# disable the help display
+# set help = no
+
+# move the status bar to the top
+set status_on_top = yes
+
+# and show some useful status information there
+set status_format = " %u new mail%?p? - %p drafts&?%?F? - %F important mail&? %> %m "
+
+set index_format  = "%4C %?X?󰁦& ?%S %.70s %> %L %D"
+# default: “ *!DdrONon-  ” from https://neomutt.org/guide/reference#3-80-%C2%A0flag_chars
+# set flag_chars = “ *!DdrONon-  ”
+set flag_chars    = "Dd󰇮󰻪󰻧  "
+set status_format = "  %u %?p?  %p&?%?F?   %F&? %>  %m "
+
+# DISPLAY MAIL
+#
+# ~/.config/neomutt/neomuttrc
+
+# sender, subject, right align, number of attachments, if any
+set pager_format = " %n - %s %> %?X?@ %X?& "
+# and again, this time with nerd fonts
+set pager_format = "  %n  %s %> %?X? 󰁦 %X ?"
+
+
