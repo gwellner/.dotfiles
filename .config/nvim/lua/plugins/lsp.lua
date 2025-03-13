@@ -1,4 +1,6 @@
 -- https://github.com/Jomik/dotfiles/blob/718c8f82963dfc0f0a1c4c25725b75223024a68c/.config/nvim/lua/plugins/lang/yaml.lua
+-- Default shemastore:
+-- https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/api/json/catalog.json
 return {
   {
     "nvim-treesitter/nvim-treesitter",
@@ -46,4 +48,16 @@ return {
       },
     },
   },
+  -- Dont work for me
+  -- {
+  --   "someone-stole-my-name/yaml-companion.nvim",
+  --   requires = {
+  --     { "neovim/nvim-lspconfig" },
+  --     { "nvim-lua/plenary.nvim" },
+  --     { "nvim-telescope/telescope.nvim" },
+  --   },
+  --   config = function()
+  --     require("telescope").load_extension("yaml_schema")
+  --   end,
+  -- },
 }

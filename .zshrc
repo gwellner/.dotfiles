@@ -1,6 +1,4 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc. Initialization code that may require console input (password prompts, [y/n] confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
@@ -50,8 +48,9 @@ export ZVM_VI_EDITOR='nvim'
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # create server in nvim with echo serverstart('/tmp/nvim.pipe')
-alias tovim='xargs -0 nvim --server /tmp/nvim.pipe --remote-send'
-alias vim='nvim  --listen /tmp/nvim.pipe'
+#alias tovim='xargs -0 nvim --server /tmp/nvim.pipe --remote-send'
+#alias vim='nvim  --listen /tmp/nvim.pipe'
+alias vim=nvim
 alias t=task
 #alias do=docker
 
