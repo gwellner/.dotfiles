@@ -73,6 +73,7 @@ bspc rule -a "Chromium":"outlook.office.com__owa" desktop='^5'
 #bspc rule -a "jetbrains-idea":"~/Work/rise/nwi-lib" desktop='^2'
 #bspc rule -a "jetbrains-idea" desktop='^3'
 bspc rule -a "KeePassXC" --one-shot desktop='^8' focus=on follow=on #KeePassXC
+bspc rule -a "teams-for-linux" desktop='^5' focus=on                #teams-for-linux
 
 # Select window wiht mouse focus
 bspc config focus_follows_pointer false

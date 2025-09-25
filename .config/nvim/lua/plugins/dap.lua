@@ -81,6 +81,7 @@ return {
     { "<leader>ds", function() require("dap").session() end, desc = "Session" },
     { "<leader>dt", function() require("dap").terminate() end, desc = "Terminate" },
     { "<leader>dw", function() require("dap.ui.widgets").hover() end, desc = "Widgets" },
+    -- SPRING_PROFILES_ACTIVE=local java -Dspring.profiles.active=local -agentlib:jdwp=transport=dt_socket,address=8000,server=y,suspend=n -jar backend/target/*.jar
     { "<leader>dR", function() require("dap").configurations.java = { { type = 'java'; request = 'attach'; name = "Debug (Attach) - Remote"; hostName = "127.0.0.1"; port = 8000; }} end, desc = "Rewrire to Java Remote Debug" },
   },
 

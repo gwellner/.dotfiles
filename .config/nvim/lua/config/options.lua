@@ -4,4 +4,5 @@
 -- ilike to close and open diffs with zo,zc,zD,zF
 vim.opt.foldmethod = "manual"
 -- ignore all white spaces when using window diffthis, or diffthis on different buffers, before diffoff
-vim.opt.dip = "iwhiteall"
+-- h diffopt
+vim.opt.dip = "iwhiteall,filler,closeoff,algorithm:patience"
