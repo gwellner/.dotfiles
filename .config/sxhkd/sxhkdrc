@@ -57,8 +57,8 @@ super + alt + u
 # Eiter start flameshot as deamon in background or use this code for standalone
 # Functionality with clipboard.
 ctrl + alt + p
-    maim -s | xclip -selection clipboard -t image/png -i
-    # flameshot gui --raw | xclip -sel clip -t image/png
+    flameshot gui --raw | xclip -sel clip -t image/png
+    # maim -s | xclip -selection clipboard -t image/png -i
 
 # rotate the entire desktop
 # https://www.reddit.com/r/bspwm/comments/4ih2o5/rotating_windows_split_orientation/
