@@ -52,6 +52,9 @@ export ZVM_VI_EDITOR='nvim'
 #alias vim='nvim  --listen /tmp/nvim.pipe'
 alias vim=nvim
 alias t=task
+alias tt=taskwarrior-tui
+alias tw=timew
+
 #alias do=docker
 
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
