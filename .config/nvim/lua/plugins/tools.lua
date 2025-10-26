@@ -234,27 +234,69 @@ return {
       "nvim-lua/plenary.nvim",
       "sindrets/diffview.nvim",
       -- "stevearc/dressing.nvim", -- Recommended but not required. Better UI for pickers.
-      "nvim-tree/nvim-web-devicons", -- Recommended but not required. Icons in discussion tree.
+      -- "nvim-tree/nvim-web-devicons", -- Recommended but not required. Icons in discussion tree.
     },
     build = function()
       require("gitlab.server").build(true)
     end, -- Builds the Go binary
     config = function()
-      require("gitlab").setup()
+      require("gitlab").setup({
+        discussion_signs = {
+          virtual_text = true, -- Whether to show the comment text inline as floating virtual text
+        },
+      })
     end,
 
     keys = {
       {
-        "<leader>cg",
+        "<leader>tg",
+        function()
+          require("gitlab")
+        end,
         desc = "Code Review GitLab",
       },
       {
-        "<leader>cgl",
-        function()
-          require("gitlab").choose_merge_request()
-        end,
-        desc = "CGL",
+        "gl",
+        desc = "Git lab list merge requests",
       },
+      -- {
+      --   "<leader>tgr",
+      --   function()
+      --     require("gitlab").review()
+      --   end,
+      --   desc = "Git lab review",
+      -- },
+      -- {
+      --   "<leader>tgc",
+      --   function()
+      --     require("gitlab").create_comment()
+      --   end,
+      --   desc = "Gitlab create comment",
+      --   mode = "n",
+      -- },
+      -- {
+      --   "<leader>tgc",
+      --   function()
+      --     require("gitlab").create_multiline_comment()
+      --   end,
+      --   desc = "Gitlab create comment",
+      --   mode = "v",
+      -- },
+      -- {
+      --   "<leader>tgs",
+      --   function()
+      --     require("gitlab").create_comment_suggestion()
+      --   end,
+      --   desc = "Gitlab create comment suggestion",
+      --   mode = "v",
+      -- },
+      -- {
+      --   "<leader>tga",
+      --   function()
+      --     require("gitlab").approve()
+      --   end,
+      --   desc = "Gitlab Approve",
+      -- },
     },
   },
   {
