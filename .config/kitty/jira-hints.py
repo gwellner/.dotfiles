@@ -6,7 +6,9 @@ def mark(text, args, Mark, extra_cli_args, *a):
     # matching text. extra_cli_args are any extra arguments
     # passed on the command line when invoking the kitten.
     # We mark all individual word for potential selection
-    for idx, m in enumerate(re.finditer(r"DWA-[0-9]+|TIPDEV-[0-9]+", text)):
+    for idx, m in enumerate(
+        re.finditer(r"DWA-[0-9]+|TIPDEV-[0-9]+", text, re.IGNORECASE)
+    ):
         start, end = m.span()
         mark_text = text[start:end].replace("\n", "").replace("\0", "")
         # The empty dictionary below will be available as groupdicts

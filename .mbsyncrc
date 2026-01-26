@@ -15,7 +15,8 @@ IMAPAccount gmail
 # Address to connect to
 Host imap.gmail.com
 User gergely.wellner@gmail.com
-PassCmd "keepassxc-cli show -s -a Password ~/.secret/master2.0.kdbx eMail/mutt"
+# PassCmd "keepassxc-cli show -s -a Password ~/.secret/master2.0.kdbx eMail/mutt"
+PassCmd "pass show mbsync/gmail"
 # To store the password in an encrypted file use PassCmd instead of Pass
 # PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.mailpass.gpg"
 #
@@ -59,12 +60,12 @@ Patterns "INBOX" "arch"
 Create Both
 
 Channel sync-googlemail-sent
-Far :gmail-remote:"[Google Mail]/Gesendet"
+Far :gmail-remote:"[Google Mail]/Sent Mail"
 Near :gmail-local:sent
 Create Near
 
 Channel sync-googlemail-trash
-Far :gmail-remote:"[Google Mail]/Papierkorb"
+Far :gmail-remote:"[Google Mail]/Trash"
 Near :gmail-local:trash
 Create Near
 
@@ -81,7 +82,8 @@ Channel sync-googlemail-trash
 IMAPAccount gmx
 Host imap.gmx.net
 User gergely.wellner@gmx.at
-PassCmd "keepassxc-cli show -s -a Password ~/.secret/master2.0.kdbx eMail/gmx"
+# PassCmd "keepassxc-cli show -s -a Password ~/.secret/master2.0.kdbx eMail/gmx"
+PassCmd "pass show mbsync/gmx"
 #UseIMAPS yes
 #CertificateFile ~/.mutt/.mutt_known_hosts
  

@@ -3,11 +3,12 @@ source ~/.config/mutt/gruvbox/colors-gruvbox-shuber.muttrc
 source ~/.config/mutt/sidebar
 
 # Folder with emails
-set folder = "~/.mail/gmail"
+set folder = "~/.mail"
 # Type of mailbox
 set mbox_type = Maildir
 # Directory to poll for new mail
-set spoolfile = +Inbox
+# set spoolfile = +Inbox
+set spoolfile="notmuch://?query=tag:unread"
 # Directory to save sent messages into
 set record = +Sent
 # Sets the drafts folder
@@ -15,9 +16,29 @@ set postponed = +Drafts
 # File that headers will be cached
 set header_cache = ~/.cache/mutt
 
+
+## NOT MUCH
+# set nm_db_limit = 0 # (or set a specific path)
+# Define the default query (e.g., show inbox):
+# set nm_default_url = "notmuch://?query=tag:inbox"
+# Enable virtual mailboxes:
+virtual-mailboxes "Inbox" "notmuch://?query=tag:inbox"
+virtual-mailboxes "All Mail" "notmuch://?query=*"
+virtual-mailboxes "Unread"   "notmuch://?query=tag:unread"
+# Map keys for searching:
+macro index <F8> "<change-folder>notmuch://?query=" "Notmuch search"
+
+
 # Local mail folders
-named-mailboxes "gmail" /home/gw/.mail/gmail/Inbox
-named-mailboxes "gmx" /home/gw/.mail/gmx/Inbox
+named-mailboxes "* gmail" /home/gw/.mail/gmail/Inbox
+named-mailboxes "   - All Mail" "/home/gw/.mail/gmail/[Gmail]/All Mail"
+named-mailboxes "   - Sent" "/home/gw/.mail/gmail/[Gmail]/Sent Mail"
+
+named-mailboxes "* gmx" /home/gw/.mail/gmx/Inbox
+
+named-mailboxes "* rise" /home/gw/.mail/rise/Inbox
+named-mailboxes "   - Sent" "/home/gw/.mail/rise/Sent"
+
 
 # Sort by threads
 set sort = threads
@@ -42,13 +63,13 @@ set index_format="%4C %?X?󰁦@& ?%S %.70s %> %L %D"
 set status_on_top = yes
 
 # and show some useful status information there
-set status_format = " %u new mail%?p? - %p drafts&?%?F? - %F important mail&? %> %m "
+# set status_format = " %u new mail%?p? - %p drafts&?%?F? - %F important mail&? %> %m | F5:Sync q:Quit d:Del "
 
 set index_format  = "%4C %?X?󰁦& ?%S %.70s %> %L %D"
 # default: “ *!DdrONon-  ” from https://neomutt.org/guide/reference#3-80-%C2%A0flag_chars
 # set flag_chars = “ *!DdrONon-  ”
 set flag_chars    = "Dd󰇮󰻪󰻧  "
-set status_format = "  %u %?p?  %p&?%?F?   %F&? %>  %m "
+set status_format = "  %u %?p?  %p&?%?F?   %F&? %>  %m | F5:Sync )"
 
 # DISPLAY MAIL
 #
@@ -59,4 +80,22 @@ set pager_format = " %n - %s %> %?X?@ %X?& "
 # and again, this time with nerd fonts
 set pager_format = "  %n  %s %> %?X? 󰁦 %X ?"
 
+
+set sendmail="/usr/bin/msmtp"
+set use_from=yes
+set realname="Gergely Wellner"
+
+# Default (Gmail)
+set from="gergely.wellner@gmail.com"
+
+# Switch to GMX when in GMX folders
+folder-hook .mail/gmx/ 'set from="gergely.wellner@gmx.at"; set realname="Gergely Wellner"; set sendmail="/usr/bin/msmtp -a gmx"'
+
+# Switch to Gmail when in Gmail folders
+folder-hook .mail/gmail/ 'set from="gergely.wellner@gmail.com"; set realname="Gergely Wellner"; set sendmail="/usr/bin/msmtp -a gmail"'
+
+# Switch to Rise when in Rise folders
+folder-hook .mail/rise/ 'set from="gergely.wellner@rise-world.com"; set realname="Gergely Wellner"; set sendmail="/usr/bin/msmtp -a rise"'
+
+macro index <F5> "<shell-escape>mbsync -a<enter>" "Sync all mail accounts"
 

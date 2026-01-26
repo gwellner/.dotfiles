@@ -1,0 +1,6 @@
+[Unit]
+Description=Run mbsync to sync mail
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/mbsync -a
