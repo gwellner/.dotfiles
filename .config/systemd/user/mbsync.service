@@ -3,4 +3,4 @@ Description=Run mbsync to sync mail
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/mbsync -a
+ExecStart=/bin/sh -c '/usr/bin/mbsync -a && /usr/bin/notmuch new'

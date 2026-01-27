@@ -1,124 +1,85 @@
-#          ╭──────────────────────────────────────────────────────────╮
-#          │                      Global Options                      │
-#          ╰──────────────────────────────────────────────────────────╯
-# Automatically create missing mailboxes, both locally and on the server
+# ╭──────────────────────────────────────────────────────────╮
+# │                      Global Options                      │
+# ╰──────────────────────────────────────────────────────────╯
 Create Both
-# Automatically delete messages on either side if they are found deleted on the other.
 Expunge Both
-# Save the synchronization state files in the relevant directory
 SyncState *
 
-#          ╭──────────────────────────────────────────────────────────╮
-#          │                 First account for Gmail                  │
-#          ╰──────────────────────────────────────────────────────────╯
+# ╭──────────────────────────────────────────────────────────╮
+# │                 Gmail Account                            │
+# ╰──────────────────────────────────────────────────────────╯
 IMAPAccount gmail
-# Address to connect to
 Host imap.gmail.com
 User gergely.wellner@gmail.com
-# PassCmd "keepassxc-cli show -s -a Password ~/.secret/master2.0.kdbx eMail/mutt"
 PassCmd "pass show mbsync/gmail"
-# To store the password in an encrypted file use PassCmd instead of Pass
-# PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.mailpass.gpg"
-#
-# Use TLS
 TLSType IMAPS
-# The following line should work. If you get certificate errors, uncomment the two following lines and read the "Troubleshooting" section.
 CertificateFile /etc/ssl/certs/ca-certificates.crt
-#CertificateFile ~/.cert/imap.gmail.com.pem
-#CertificateFile ~/.cert/Equifax_Secure_CA.pem
 
 IMAPStore gmail-remote
 Account gmail
 
 MaildirStore gmail-local
 SubFolders Verbatim
-# The trailing "/" is important
 Path ~/.mail/gmail/
 Inbox ~/.mail/gmail/Inbox
 
 Channel gmail
 Far :gmail-remote:
 Near :gmail-local:
-# Exclude everything under the internal [Gmail] folder, except the interesting folders
-Patterns * ![Gmail]* "[Gmail]/Sent Mail" "[Gmail]/Starred" "[Gmail]/All Mail"
-# Or include everything
-#Patterns *
-# Automatically create missing mailboxes, both locally and on the server
+Patterns *
 Create Both
-# Sync the movement of messages between folders and deletions, add after making sure the sync works
 Expunge Both
-# Save the synchronization state files in the relevant directory
 SyncState *
 
-# It is possible to avoid the proprietary [Gmail] (or [Google Mail]) folder categorization by using separate channels 
-# for each directory, and later merging them to a group:
-Channel sync-googlemail-default
-Far :gmail-remote:
-Near :gmail-local:
-# Select some mailboxes to sync
-Patterns "INBOX" "arch"
-Create Both
-
-Channel sync-googlemail-sent
-Far :gmail-remote:"[Google Mail]/Sent Mail"
-Near :gmail-local:sent
-Create Near
-
-Channel sync-googlemail-trash
-Far :gmail-remote:"[Google Mail]/Trash"
-Near :gmail-local:trash
-Create Near
-
-# Get all the channels together into a group.
-Group googlemail
-Channel sync-googlemail-default
-Channel sync-googlemail-sent
-Channel sync-googlemail-trash
-
-#          ╭──────────────────────────────────────────────────────────╮
-#          │                  Second account for gmx                  │
-#          ╰──────────────────────────────────────────────────────────╯
-
+# ╭──────────────────────────────────────────────────────────╮
+# │                 GMX Account                              │
+# ╰──────────────────────────────────────────────────────────╯
 IMAPAccount gmx
 Host imap.gmx.net
 User gergely.wellner@gmx.at
-# PassCmd "keepassxc-cli show -s -a Password ~/.secret/master2.0.kdbx eMail/gmx"
 PassCmd "pass show mbsync/gmx"
-#UseIMAPS yes
-#CertificateFile ~/.mutt/.mutt_known_hosts
- 
+TLSType IMAPS
+
 IMAPStore gmx-remote
 Account gmx
- 
+
 MaildirStore gmx-local
-# The trailing "/" is important
+SubFolders Verbatim
 Path ~/.mail/gmx/
-Inbox ~/.mail/gmx/inbox
+Inbox ~/.mail/gmx/Inbox
 
-Channel gmx-default
+Channel gmx
 Far :gmx-remote:
-Near :gmx-local:Inbox
-#Patterns INBOX
- 
-Channel gmx-sent
-Far :gmx-remote:"Sent"
-Near  :gmx-local:Sent
- 
-Channel gmx-trash
-Far :gmx-remote:"Trash"
-Near  :gmx-local:Trash
+Near :gmx-local:
+Patterns *
+Create Both
+Expunge Both
+SyncState *
 
-Channel gmx-archive
-Far :gmx-remote:"Archive"
-Near  :gmx-local:All
- 
-Channel gmx-junk
-Far :gmx-remote:"Junk"
-Near  :gmx-local:Junk
- 
-Group gmx
-Channel gmx-default
-Channel gmx-trash
-Channel gmx-archive
-Channel gmx-sent
-Channel gmx-junk
+# ╭──────────────────────────────────────────────────────────╮
+# │                 Rise World Account                       │
+# ╰──────────────────────────────────────────────────────────╯
+# pass insert mbsync/rise
+IMAPAccount rise
+Host mail.rise-world.com
+User gergely.wellner@rise-world.com
+PassCmd "pass show mbsync/rise"
+Port 993
+TLSType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore rise-remote
+Account rise
+
+MaildirStore rise-local
+SubFolders Verbatim
+Path ~/.mail/rise/
+Inbox ~/.mail/rise/Inbox
+
+Channel rise
+Far :rise-remote:
+Near :rise-local:
+Patterns *
+Create Both
+Expunge Both
+SyncState *

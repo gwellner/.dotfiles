@@ -99,3 +99,4 @@ folder-hook .mail/rise/ 'set from="gergely.wellner@rise-world.com"; set realname
 
 macro index <F5> "<shell-escape>mbsync -a<enter>" "Sync all mail accounts"
 
+auto_view text/html

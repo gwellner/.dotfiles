@@ -1,0 +1,2 @@
+# This should open pdf files from neomuttin firefox.
+application/pdf; xdg-open %s

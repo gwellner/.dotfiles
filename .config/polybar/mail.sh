@@ -1,9 +1,9 @@
-MAILDIR=~/Mail/INBOX/new # Adjust to your maildir path
-NEW=$(find "$MAILDIR" -type f | wc -l)
+# Count unread mail using notmuch
+UNREAD=$(notmuch count tag:unread)
 
-if [ "$NEW" -gt 0 ]; then
-  # Unicode envelope icon + count
-  echo " $NEW"
+if [ "$UNREAD" -gt 0 ]; then
+  # Envelope icon (Font Awesome/Nerd Font) + count
+  echo " $UNREAD"
 else
   echo ""
 fi
