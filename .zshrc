@@ -54,6 +54,7 @@ alias vim=nvim
 alias t=task
 alias tt=taskwarrior-tui
 alias tw=timew
+alias m=neomutt
 
 #alias do=docker
 
