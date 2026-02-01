@@ -1,4 +1,7 @@
 # vim: filetype=neomuttrc
+#
+# Need to install notmuch and afew 
+#
 source ~/.config/mutt/gruvbox/colors-gruvbox-shuber.muttrc
 source ~/.config/mutt/sidebar
 
