@@ -1,4 +1,4 @@
-text/html; $BROWSER %s
+# text/html; $BROWSER %s
 text/html; w3m -I %{charset} -T text/html -dump; copiousoutput;
 image/jpeg; firefox-developer-edition %s
 application/pdf; xdg-open %s

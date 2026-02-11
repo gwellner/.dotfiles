@@ -100,8 +100,9 @@ folder-hook .mail/gmail/ 'set from="gergely.wellner@gmail.com"; set realname="Ge
 # Switch to Rise when in Rise folders
 folder-hook .mail/rise/ 'set from="gergely.wellner@rise-world.com"; set realname="Gergely Wellner"; set sendmail="/usr/bin/msmtp -a rise"'
 
-#macro index <F5> "<shell-escape>mbsync -a<enter>" "Sync all mail accounts"
-
 macro index <F5> "<shell-escape>mbsync -a; notmuch new<enter>" "Sync all mail accounts and update tags"
+
+set wait_key = no
+macro index <F6> "<shell-escape>nohup sh -c 'mbsync -a; notmuch new' > /dev/null 2>&1 &<enter>" "Sync mail in background"
 
 auto_view text/html

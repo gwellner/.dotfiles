@@ -99,6 +99,13 @@ return {
         end,
         desc = "Gitlab Approve",
       },
+      {
+        "<leader>tgb",
+        function()
+          require("gitlab").open_in_browser()
+        end,
+        desc = "Gitlab Open in Browser",
+      },
     },
   },
 }
