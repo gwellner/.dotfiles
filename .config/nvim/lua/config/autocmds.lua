@@ -8,3 +8,14 @@ vim.api.nvim_command("autocmd TermEnter * setlocal signcolumn=no") -- no sign co
 vim.api.nvim_command("augroup END")
 
 vim.keymap.set("t", "<esc>", "<C-\\><C-n>")
+
+-- Remove Ctrl+L from copilot-chat, delay is needed since it seems to be set after the FileType event is triggered.
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "copilot-chat",
+  callback = function()
+    vim.defer_fn(function()
+      pcall(vim.api.nvim_buf_del_keymap, 0, "n", "<C-l>")
+      pcall(vim.api.nvim_buf_del_keymap, 0, "i", "<C-l>")
+    end, 100) -- delay in ms
+  end,
+})
