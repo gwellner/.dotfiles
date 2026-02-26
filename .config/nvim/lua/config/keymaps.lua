@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-global
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
@@ -18,8 +19,22 @@ vim.keymap.set(
 )
 
 vim.keymap.set("v", "<leader>ct", function()
-  -- Write only the visual selection to a temp file
-  vim.cmd('silent! normal! "<Esc>:w! /tmp/nvim_bash_tmp.sh<CR>"')
-  -- Open a new vertical split terminal and run only the temp file, then keep shell open
-  vim.cmd("vsplit | terminal zsh -c 'source ~/.zshrc; /tmp/nvim_bash_tmp.sh; exec zsh'")
+  vim.cmd("silent! write") -- Save buffer first
+  -- Get visual selection
+  local start_pos = vim.fn.getpos("'<")
+  local end_pos = vim.fn.getpos("'>")
+  local lines = vim.fn.getline(start_pos[2], end_pos[2])
+  if #lines > 0 then
+    lines[#lines] = string.sub(lines[#lines], 1, end_pos[3])
+    lines[1] = string.sub(lines[1], start_pos[3], #lines[1])
+  end
+  local content = table.concat(lines, "\n")
+  -- Write to temp file
+  local tmpfile = "/tmp/nvim_bash_tmp.sh"
+  local f = io.open(tmpfile, "w")
+  f:write(content)
+  f:close()
+  vim.fn.system("chmod +x " .. tmpfile)
+  -- Open vertical split terminal and run the script
+  vim.cmd("vsplit | terminal zsh -c 'source ~/.zshrc; " .. tmpfile .. "; exec zsh'")
 end, { noremap = true, silent = true, desc = "Run selection in terminal, keep shell open, and add to history" })
