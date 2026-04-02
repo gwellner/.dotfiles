@@ -1,13 +1,15 @@
--- https://www.lazyvim.org/plugins/formatting
+---@diagnostic disable: undefined-global
+--- https://www.lazyvim.org/plugins/formatting
 return {
   "stevearc/conform.nvim",
   dependencies = { "mason.nvim" },
   opts = function()
+    ---@diagnostic disable-next-line: undefined-doc-name
     ---@type conform.setupOpts
     local opts = {
       default_format_opts = {
-        timeout_ms = 3000,
-        async = false, -- not recommended to change
+        timeout_ms = 20000,
+        async = true, -- not recommended to change
         quiet = false, -- not recommended to change
         lsp_format = "fallback", -- not recommended to change
       },
@@ -15,30 +17,39 @@ return {
         lua = { "stylua" },
         fish = { "fish_indent" },
         sh = { "shfmt" },
+        typescript = { "prettier" },
+        javascript = { "prettier" },
         java = { "google_java_format" },
+        -- java = { "lsp" },
+        -- java = { "intellij_formatter" },
       },
-      -- The options you set here will be merged with the builtin formatters.
-      -- You can also define any custom formatters here.
+      ---@diagnostic disable-next-line: undefined-doc-name
       ---@type table<string, conform.FormatterConfigOverride|fun(bufnr: integer): nil|conform.FormatterConfigOverride>
       formatters = {
         injected = { options = { ignore_errors = true } },
-        -- # Example of using dprint only when a dprint.json file is present
-        -- dprint = {
-        --   condition = function(ctx)
-        --     return vim.fs.find({ "dprint.json" }, { path = ctx.filename, upward = true })[1]
-        --   end,
-        -- },
-        --
-        -- # Example of using shfmt with extra args
-        -- shfmt = {
-        --   prepend_args = { "-i", "2", "-ci" },
-        --
-        -- },
-        google_java_format = {
-          command = "google-java-format",
-          args = { "-" },
-          stdin = true,
+
+        -- Custom IntelliJ formatter
+        intellij_formatter = {
+          format = function(ctx)
+            return {
+              exe = vim.fn.expand("~/Tools/idea/idea-IU-253.31033.145/bin/format.sh"),
+              args = {
+                "format",
+                "-allowDefaults", -- use default IntelliJ style if no XML
+                ctx.bufname, -- the file to format
+                -- optionally, you can still add: "--settings", "/path/to/IntelliJCodeStyle.xml"
+              },
+              stdin = false, -- formats files directly
+            }
+          end,
         },
+
+        -- Example: google_java_format (commented)
+        -- google_java_format = {
+        --   command = "google-java-format",
+        --   args = { "-" },
+        --   stdin = true,
+        -- },
       },
     }
     return opts

@@ -273,4 +273,16 @@ return {
   --     require("r").setup(opts)
   --   end,
   -- },
+  --
+  {
+    lazy = true,
+    "mbbill/undotree",
+    cmd = "UndotreeToggle", -- Plugin loads only when this command is run
+    keys = {
+      { "<leader>tu", "<cmd>UndotreeToggle<cr>", desc = "Toggle UndoTree" },
+    },
+    init = function()
+      vim.g.undotree_WindowLayout = 2
+    end,
+  },
 }

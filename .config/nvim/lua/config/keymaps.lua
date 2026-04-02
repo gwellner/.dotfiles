@@ -28,12 +28,19 @@ vim.keymap.set("v", "<leader>ct", function()
     lines[#lines] = string.sub(lines[#lines], 1, end_pos[3])
     lines[1] = string.sub(lines[1], start_pos[3], #lines[1])
   end
+
+  if type(lines) == "string" then
+    lines = { lines }
+  end
   local content = table.concat(lines, "\n")
+
   -- Write to temp file
   local tmpfile = "/tmp/nvim_bash_tmp.sh"
   local f = io.open(tmpfile, "w")
-  f:write(content)
-  f:close()
+  if f then
+    f:write(content)
+    f:close()
+  end
   vim.fn.system("chmod +x " .. tmpfile)
   -- Open vertical split terminal and run the script
   vim.cmd("vsplit | terminal zsh -c 'source ~/.zshrc; " .. tmpfile .. "; exec zsh'")

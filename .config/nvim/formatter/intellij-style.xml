@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<profiles version="12">
+    <profile kind="CodeFormatterProfile" name="IntelliJ IDEA Style With New Line" version="12">
+
+        <!-- Tabs / Indentation -->
+        <setting id="org.eclipse.jdt.core.formatter.tabulation.char" value="tab"/>
+        <setting id="org.eclipse.jdt.core.formatter.tabulation.size" value="4"/>
+        <setting id="org.eclipse.jdt.core.formatter.indentation.size" value="4"/>
+
+        <!-- Line length -->
+        <setting id="org.eclipse.jdt.core.formatter.lineSplit" value="120"/>
+        <setting id="org.eclipse.jdt.core.formatter.comment.line_length" value="120"/>
+
+        <!-- Braces (IntelliJ style) -->
+        <setting id="org.eclipse.jdt.core.formatter.brace_position_for_block" value="end_of_line"/>
+        <setting id="org.eclipse.jdt.core.formatter.brace_position_for_method_declaration" value="end_of_line"/>
+        <setting id="org.eclipse.jdt.core.formatter.brace_position_for_type_declaration" value="end_of_line"/>
+
+        <!-- Annotation wrapping -->
+        <setting id="org.eclipse.jdt.core.formatter.insert_new_line_after_annotation_on_type" value="insert"/>
+        <setting id="org.eclipse.jdt.core.formatter.insert_new_line_after_annotation_on_method" value="insert"/>
+        <setting id="org.eclipse.jdt.core.formatter.insert_new_line_after_annotation_on_field" value="insert"/>
+        <setting id="org.eclipse.jdt.core.formatter.insert_new_line_after_annotation_on_local_variable" value="insert"/>
+
+        <!-- Wrapping / Join lines -->
+        <setting id="org.eclipse.jdt.core.formatter.join_wrapped_lines" value="true"/>
+        <setting id="org.eclipse.jdt.core.formatter.join_lines_in_comments" value="true"/>
+
+        <!-- Assignment operator wrapping -->
+        <setting id="org.eclipse.jdt.core.formatter.alignment_for_assignment" value="48"/>
+
+        <!-- Method arguments -->
+        <setting id="org.eclipse.jdt.core.formatter.alignment_for_arguments_in_method_invocation" value="48"/>
+        <!-- Constructor arguments -->
+        <setting id="org.eclipse.jdt.core.formatter.alignment_for_arguments_in_allocation_expression" value="48"/>
+        <!-- Selector chaining -->
+        <setting id="org.eclipse.jdt.core.formatter.alignment_for_selector_in_method_invocation" value="16"/>
+
+        <!-- Optional: wrap only when necessary for binary expressions -->
+        <setting id="org.eclipse.jdt.core.formatter.alignment_for_binary_expression" value="16"/>
+
+        <setting id="org.eclipse.jdt.core.formatter.join_wrapped_lines" value="false"/>
+    </profile>
+</profiles>
