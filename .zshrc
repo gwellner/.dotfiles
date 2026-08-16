@@ -16,6 +16,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git fasd extract zsh-vi-mode azure-cli)
 
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration

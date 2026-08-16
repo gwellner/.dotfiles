@@ -39,6 +39,13 @@ return {
               validate = true,
               keyOrdering = false,
               -- https://docs.gitlab.com/ee/ci/yaml/yaml_optimization.html#reference-tags
+              --
+              schemas = {
+                -- ["https://json.schemastore.org/kubernetes.json"] = "!*application.yaml",
+                -- ["https://json.schemastore.org/springboot.json"] = "*application.yaml",
+                -- Example: ["https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.27.0-standalone-strict/all.json"] = "!*application.yaml",
+                -- Remove the springboot.json line
+              },
               customTags = {
                 "!reference sequence",
               },

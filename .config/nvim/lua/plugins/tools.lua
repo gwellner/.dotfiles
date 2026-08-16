@@ -40,7 +40,14 @@ return {
       require("dbee").install()
     end,
     config = function()
-      require("dbee").setup(--[[optional config]] { lazy = true, log_level = "debug" })
+      require("dbee").setup(--[[optional config]] {
+        lazy = true,
+        log_level = "debug",
+        keymaps = {
+          expand = "<leader>e", -- or any key you prefer
+          -- other mappings...
+        },
+      })
     end,
     init = function()
       require("which-key").add({
